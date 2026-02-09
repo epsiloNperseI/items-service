@@ -1,0 +1,30 @@
+### Создать товар
+POST http://localhost:8080/api/items
+Content-Type: application/json
+
+{
+  "name": "iPhone 15 Pro",
+  "extraNumber": 999,
+  "extraText": "Флагманский смартфон"
+}
+
+### Получить все товары
+GET http://localhost:8080/api/items
+
+### Обновить товар (замени {id} на реальный ID)
+PUT http://localhost:8080/api/items/1
+Content-Type: application/json
+
+{
+  "name": "Обновленное название",
+  "extraNumber": 500,
+  "extraText": "Новое описание"
+}
+
+### Экспортировать данные в Excel
+POST http://localhost:8080/api/items/export
+Content-Type: application/json
+
+{
+  "columns": ["id", "name", "extraNumber", "extraText"]
+}
