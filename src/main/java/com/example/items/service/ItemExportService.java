@@ -92,8 +92,9 @@ public class ItemExportService {
         return switch (column) {
             case COLUMN_ID -> String.valueOf(item.getId());
             case COLUMN_NAME -> item.getName();
-            case COLUMN_EXTRA_NUMBER -> String.valueOf(item.getExtraNumber());
-            case COLUMN_EXTRA_TEXT -> item.getExtraText();
+            case COLUMN_EXTRA_NUMBER -> item.getExtraNumber() != null
+                ? String.valueOf(item.getExtraNumber()) : "";
+            case COLUMN_EXTRA_TEXT -> item.getExtraText() != null ? item.getExtraText() : "";
             default -> throw new IllegalArgumentException("Unknown column: " + column);
         };
     }
