@@ -15,6 +15,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 @Service
 @RequiredArgsConstructor
@@ -56,7 +57,10 @@ public class ItemExportService {
     private void createHeader(Sheet sheet, List<String> columns) {
         Row header = sheet.createRow(0);
         for (int i = 0; i < columns.size(); i++) {
-            header.createCell(i).setCellValue(columns.get(i));
+            String displayName = StringUtils.capitalize(
+                columns.get(i).replaceAll("([A-Z])", " $1").toLowerCase()
+            );
+            header.createCell(i).setCellValue(displayName);
         }
     }
 
